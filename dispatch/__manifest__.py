@@ -1,7 +1,7 @@
 {
     'name': "Transport Management System",
     'version': '1.0',
-    'depends': ['base','fleet','stock_picking_batch'],
+    'depends': ['base','fleet','stock_picking_batch','web_gantt','stock'],
     'author': "Hritik Kumar",
     'category': 'Category',
     'description': """
@@ -12,6 +12,8 @@
         "security/ir.model.access.csv",
         "views/transport_management_system_views.xml",
         'views/my_module_views.xml',
+        # 'views/inventory_graph_views.xml',
+        "views/inherit_stock_picking_views.xml",
         "views/inventory_batch_views.xml",
     ],
     "application": True,

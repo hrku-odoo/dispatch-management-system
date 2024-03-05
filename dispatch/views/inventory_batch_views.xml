@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="stock_picking_batch_view_form" model="ir.ui.view">
         <field name="name">stock.picking.batch.form</field>
         <field name="model">stock.picking.batch</field>
@@ -10,8 +11,44 @@
                 <field name="vehicle" />
                 <field name="category" />
                 <field name="weight" widget="progressbar"/>
-                <field name="category_volume" widget="progressbar"/>
+                <field name="volume" widget="progressbar"/>
             </xpath>
         </field>
+    </record>
+
+    <record id="view_stock_picking_batch_gantt" model="ir.ui.view">
+        <field name="name">stock.picking.batch.gantt</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <gantt date_start="scheduled_date"
+                date_stop="scheduled_date"
+                default_scale="week"
+                scales="day,week,month,year"
+                string="Batch Gantt View"
+                color="dock"
+                decoration-info="state in ['draft', 'done']"
+                pill_label = "True"
+                default_group_by="dock,vehicle">
+                <field name="state"/>
+                <field name="category"/>
+                <!-- <field name="partner_image" widget="image" class="oe_avatar"/> -->
+            </gantt>
+        </field>
+    </record>
+
+    <record id="stock_picking_batch_graph_view" model="ir.ui.view">
+        <field name="name">stock.picking.batch.graph.view</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="arch" type="xml">
+            <graph string="Batch Transfer" >
+                <field name="scheduled_date"/>
+                <field name="category"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="stock_picking_batch.stock_picking_batch_action" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,graph,gantt</field>
     </record>
 </odoo>
