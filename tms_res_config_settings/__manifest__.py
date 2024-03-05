@@ -1,7 +1,7 @@
 {
-    'name': "Transport Management System",
+    'name': "Res Config Settings Inherited",
     'version': '1.0',
-    'depends': ['base','fleet','stock_picking_batch','web_gantt','stock'],
+    'depends': ['base','stock'],
     'author': "Hritik Kumar",
     'category': 'Category',
     'description': """
@@ -9,13 +9,11 @@
     """,
     # data files always loaded at installation
     'data': [
-        "security/ir.model.access.csv",
-        "views/fleet_vehicle_model_inherit_views.xml",
-        "views/stock_picking_inherit_views.xml",
-        "views/stock_picking_batch_inherit.xml",
+        "views/res_config_inherited_views.xml",
     ],
     "application": True,
     "installable":True,
+    "auto_install":True,
     # # data files containing optionally loaded demonstration data
     # 'demo': [
     #     'demo/demo_data.xml',

@@ -10,4 +10,4 @@ class TransportManagementSystem(models.Model):
     @api.depends('name', 'max_weight', 'max_volume')
     def _compute_display_name(self):
         for record in self:
-            record.display_name = f"{record.name} ({record.max_weight},{record.max_volume})"
+            record.display_name = f"{record.name} ({record.max_weight} kg,{record.max_volume} m^3)"
