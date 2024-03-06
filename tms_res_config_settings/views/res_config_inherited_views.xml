@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//block[@name='shipping_setting_container']" position="inside">
-                    <setting id="module_stock_install" company_dependent="1" help="Download the Stock Transport App">
+                    <setting id="module_stock_install" company_dependent="1" help="Transport Management: organize packs in your fleet, or carriers.">
                         <field name='module_dispatch'/>
                     </setting>
                 </xpath>

@@ -7,11 +7,19 @@
         <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='scheduled_date']" position="after">
-                <field name="dock" />
-                <field name="vehicle" placeholder='Opel GJ45XC1234'/>
-                <field name="category" placeholder='Semi Truck (250 kg,30 m^3)'/>
-                <field name="weight" widget="progressbar"/>
-                <field name="volume" widget="progressbar"/>
+                <field name="dock_id" />
+                <field name="vehicle_id" placeholder='Opel GJ45XC1234'/>
+                <field name="category_id" placeholder='Semi Truck (250 kg,30 m^3)'/>
+                <label for='total_weight' style="display: block; margin-bottom: 5px;" string='Weight'/>
+                <div class="o_row" style="margin: 2px 0;">
+                    <field name='total_weight' style="margin-right: -200px;" />  
+                    <field name='weight' class='oe_inline' widget='progressbar' invisible='not category_id' />
+                </div>
+                <label for='total_weight' style="display: block; margin-bottom: 5px;" string='Volume'/>
+                <div class="o_row" style="margin: 2px 0;">
+                    <field name='total_volume' style="margin-right: -200px;" />  
+                    <field name='volume' class='oe_inline' widget='progressbar' invisible='not category_id' />
+                </div>
             </xpath>
         </field>
     </record>
@@ -26,14 +34,14 @@
                 default_scale="week"
                 scales="day,week,month,year"
                 string="Batch Gantt View"
-                color="dock"
+                color="picking_type_id"
                 decoration-info="state in ['draft']"
                 pill_label="True"
-                default_group_by="dock,vehicle"
+                default_group_by="dock_id,vehicle_id,user_id"
+                thumbnails="{'user_id':'image_1920'}"
                 >
                 <field name="state"/>
-                <field name="category"/>
-                <!-- <field name="partner_image" widget="image" class="oe_avatar"/> -->
+                <field name="category_id"/>
             </gantt>
         </field>
     </record>
@@ -44,7 +52,7 @@
         <field name="arch" type="xml">
             <graph string="Batch Transfer" >
                 <field name="scheduled_date" interval="day" />
-                <field name="category"/>
+                <field name="category_id"/>
             </graph>
         </field>
     </record>
